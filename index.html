@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+    <title>Punk API Beer App</title>
+  </head>
+  <body>
+    
+    <header class="header">
+      <h1 class="header__main-heading">Punk API Beer App</h1>
+      <div class="header__info">
+        <p>Search through Brewdog's expansive back catalogue of beer. Use the filters to search by alcohol volume and level of hops.</p>
+        <p>Select a beer to see a detailed description.</p>
+      </div>
+    </header>
+    
+    <aside>
+      <div id="filters">
+        <div class="filter__text">
+          <h2>ABV</h2>
+          <p>Alcohol Volume (%)</p>
+        </div>
+        <div class="filter">
+          <form id="filterABV" class="filter__form">
+    
+              <input
+                  type="radio"
+                  name="filter-abv"
+                  class="filter__form--low"
+                  id="abvLow"
+                  value="low"
+                />
+              <label for="abvLow" class="filter__form--select">Low</label>
+    
+              <input
+                  type="radio"
+                  name="filter-abv"
+                  class="filter__form--medium"
+                  id="abvMedium"
+                  value="medium"
+                />
+              <label for="abvMedium" class="filter__form--select">
+                Med
+              </label>
+    
+              <input
+                  type="radio"
+                  name="filter-abv"
+                  class="filter__form--high"
+                  id="abvHigh"
+                  value="high"
+                />
+              <label for="abvHigh" class="filter__form--select">
+                High
+              </label>
+    
+    
+            <input
+                type="radio"
+                name="filter-abv"
+                class="filter__form--all"
+                id="abvAll"
+                value="all"
+                checked
+              />
+            <label for="abvAll" class="filter__form--select-all">
+              Show All
+            </label>
+          </form>
+        </div>
+      
+        <div class="filter__text">
+          <h2>IBU</h2>
+          <p>Hoppiness</p>
+        </div>
+        <div class="filter">
+          <form id="filterIBU" class="filter__form">
+      
+              <input
+                type="radio"
+                name="filter-ibu"
+                class="filter__form--low"
+                id="ibuLow"
+                value="low"
+              />
+              <label for="ibuLow" class="filter__form--select">
+                Low
+              </label>
+      
+              <input
+                type="radio"
+                name="filter-ibu"
+                class="filter__form--medium"
+                id="ibuMedium"
+                value="medium"
+              />
+              <label for="ibuMedium" class="filter__form--select">
+                Med
+              </label>
+      
+              <input
+                type="radio"
+                name="filter-ibu"
+                class="filter__form--high"
+                id="ibuHigh"
+                value="high"
+              />
+              <label for="ibuHigh" class="filter__form--select">
+                High
+              </label>
+      
+            <input
+              type="radio"
+              name="filter-ibu"
+              class="filter__form--all"
+              id="ibuAll"
+              value="all"
+              checked
+            />
+            <label for="ibuAll" class="filter__form--select-all">
+              Show All
+            </label>
+          </form>
+        </div>
+      </div>
+    </aside>  
+    
+    <button id="filter__btn">
+      <svg id="filter__btn--menu" width="27" height="29" viewBox="0 0 27 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25 2H2L10.8 15.1389V24.2222L16.2 27V15.1389L25 2Z" stroke="#F9F9F9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+        
+      <svg id="filter__btn--close" width="25" height="15" viewBox="0 0 25 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 13L12.5 2L23 13" stroke="#F9F9F9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+        
+    </button>
+    
+    <main>
+      <div class="beers"></div>
+    
+      <div class="pagination">
+        <button id="prevPage" class="pagination__btn pagination__btn--previous" disabled>
+          <svg width="14" height="25" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.5 2L2 12.5L12.5 23" stroke="rgba(0, 158, 198, 1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        
+        <div class="pagination__page-number">Page <span id="pageNumber">1</span></div>
+
+        <button id="nextPage" class="pagination__btn pagination__btn--next">
+          <svg width="14" height="25" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 23L12.5 12.5L2 2" stroke="rgba(0, 158, 198, 1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      
+      <div id="overlay">
+    </main>
+    
+    
+    <script src="js/app.js"></script>
+  </body>
+</html>
